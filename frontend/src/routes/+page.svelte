@@ -9,6 +9,30 @@
   let error: string | null = null;
   let sessionId: string | null = null;
   let theme: 'light' | 'dark' = 'light';
+  let messagesEl: HTMLElement | null = null;
+let autoScroll = true;
+
+function handleScroll() {
+  if (!messagesEl) return;
+  const threshold = 40; // px from bottom to still count as “at bottom”
+  const distanceFromBottom =
+    messagesEl.scrollHeight - messagesEl.scrollTop - messagesEl.clientHeight;
+  autoScroll = distanceFromBottom < threshold;
+}
+
+function scrollToBottom() {
+  if (!messagesEl) return;
+  if (!autoScroll) return; // user scrolled up; don't force them down
+  setTimeout(() => {
+    if (!messagesEl || !autoScroll) return;
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }, 0);
+}
+
+// run when messages change
+$: if (messagesEl && messages.length > 0) {
+  scrollToBottom();
+}
 
   onMount(async () => {
     const storedTheme = localStorage.getItem('spur_theme');
@@ -122,7 +146,7 @@
         </div>
       </header>
 
-      <main class="messages">
+      <main class="messages" bind:this={messagesEl} on:scroll={handleScroll}>
         {#if messages.length === 0}
           <div class="empty">
             <div class="emoji">🤖</div>
@@ -160,12 +184,12 @@
 
       <footer class="input-bar">
         <textarea
-          bind:value={message}
-          placeholder="Type your message..."
-          rows="1"
-          on:keydown={handleKeydown}
-          disabled={isLoading}
-        />
+  bind:value={message}
+  placeholder="Type your message..."
+  rows="1"
+  on:keydown={handleKeydown}
+  disabled={isLoading}
+></textarea>
         <button on:click={sendMessage} disabled={isLoading || !message.trim()}>
           {#if isLoading}
             …
