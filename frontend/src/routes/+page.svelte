@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
+  const API_BASE = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:3001';
+
   let message = '';
   let messages: { sender: 'user' | 'ai'; text: string; timestamp: string }[] = [];
   let isLoading = false;
@@ -19,7 +21,7 @@
 
     sessionId = stored;
     try {
-      const res = await fetch(`http://localhost:3001/api/chat/history/${sessionId}`);
+      const res = await fetch(`${API_BASE}/api/chat/history/${sessionId}`);
       if (!res.ok) return;
       const data = await res.json();
       if (Array.isArray(data.messages)) {
@@ -54,7 +56,7 @@
         payload.sessionId = sessionId;
       }
 
-      const res = await fetch('http://localhost:3001/api/chat/message', {
+      const res = await fetch(`${API_BASE}/api/chat/message`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
