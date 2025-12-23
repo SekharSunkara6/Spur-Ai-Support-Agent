@@ -12,10 +12,19 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(helmet());
-app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(express.json({ limit: '1mb' }));
 app.use(morgan('dev'));
 app.use(express.static('public'));
+app.use(
+  cors({
+    origin: [
+      'http://localhost:5173',
+      'https://spur-ai-support-agent.vercel.app'
+    ],
+    credentials: true
+  })
+);
+
 
 // nice landing page at /
 app.get('/', (_req, res) => {
