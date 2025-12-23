@@ -202,9 +202,9 @@ app.get('/', (_req, res) => {
 
           <div class="footer">
             <p class="hint">Tip: open the chat UI in another tab and watch this API handle requests in your logs.</p>
-            <a href="http://localhost:5173" class="btn">
-              <span>➜</span> Open chat UI
-            </a>
+            <a href="https://spur-ai-support-agent.vercel.app" class="btn" target="_blank">
+  <span>➜</span> Open chat UI
+</a>
           </div>
         </div>
       </body>
