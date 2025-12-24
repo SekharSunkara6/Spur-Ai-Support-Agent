@@ -349,7 +349,7 @@ Production URL: `https://spur-ai-support-agent.vercel.app`.
 
 - Domain knowledge is prompt‑based, not a full knowledge base or RAG system.  
 - No auth; conversations are anonymous and keyed by a random `sessionId`.  
-- Single provider (OpenAI), single model, no provider abstraction.
+- Single provider (OpenRouter), single model, no provider abstraction.
 
 **Future improvements:**
 
