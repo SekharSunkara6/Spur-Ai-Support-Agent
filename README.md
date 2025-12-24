@@ -256,9 +256,8 @@ This separation makes it easy to later plug in other channels (WhatsApp, Instagr
 ## 🧠 8. LLM Integration
 
 ### 8.1. Provider
-
-- ⚙️ **Provider**: OpenAI  
-- 🔑 **Auth**: `OPENAI_API_KEY` via environment variables.
+- ⚙️ **Provider**: OpenRouter  
+- 🔑 **Auth**: `OPENROUTER_API_KEY` via environment variables.
 
 ### 8.2. Prompting strategy
 
