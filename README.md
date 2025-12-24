@@ -372,3 +372,10 @@ Production URL: `https://spur-ai-support-agent.vercel.app`.
    - “What are your support hours?”  
 3. Refresh the page – the previous chat should reload (conversation history from Postgres).  
 4. Open `https://spur-ai-support-agent.onrender.com` to see backend status and “Open chat UI” button.
+
+---
+
+## 🧾 Credits
+
+Built with 🧠 code, ☕ coffee, and a lot of debugging.  
+Made with ❤️ by **Sunkara Purnasekhar**.
