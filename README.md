@@ -324,7 +324,7 @@ Environment variables:
 
 - `PORT`  
 - `DATABASE_URL`  
-- `OPENAI_API_KEY`  
+- `OPENROUTER_API_KEY` 
 - `FRONTEND_URL=https://spur-ai-support-agent.vercel.app`  
 
 Status page: `https://spur-ai-support-agent.onrender.com`.
